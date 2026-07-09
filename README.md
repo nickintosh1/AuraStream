@@ -11,7 +11,7 @@
 
 **Continuous linear token vesting and asset streaming on Stellar Testnet — built using Soroban smart contracts with verifiable on-chain inter-contract calls.**
 
-🌐 **[Live Demo →](https://aurastream.parcel-crib-pectin.workers.dev/)**
+🌐 ** Live Demo → https://aurastream.parcel-crib-pectin.workers.dev **
 
 🎬 **Demo Video:**  
 ![AuraStream Demo](screenshots/Snapzy_Recording_2026-07-09_23-14-01.gif)
