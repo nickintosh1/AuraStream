@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { ArrowUpRight, ArrowDownLeft, XCircle, ShieldAlert } from 'lucide-react';
 import { VestingFlowInfo } from '../../core/stellar';
+import { calculateVestingProgress, calculateWithdrawable } from '../../core/vesting-math';
 
 interface VestingCardProps {
   flow: VestingFlowInfo;
@@ -30,17 +31,15 @@ export const VestingCard: React.FC<VestingCardProps> = ({
   useEffect(() => {
     const updateTicker = () => {
       const now = Math.floor(Date.now() / 1000);
-      const elapsed = Math.max(0, now - flow.commencement);
-      
-      let vested = 0;
-      if (elapsed >= flow.vestingPeriod) {
-        vested = flow.principal;
-      } else {
-        vested = (flow.principal * elapsed) / flow.vestingPeriod;
-      }
-      
+      const { vested, progress } = calculateVestingProgress(
+        now,
+        flow.commencement,
+        flow.vestingPeriod,
+        flow.principal,
+      );
+
       setLiveVested(vested);
-      setProgress(Math.min(100, (elapsed / flow.vestingPeriod) * 100));
+      setProgress(progress);
     };
 
     updateTicker();
@@ -49,7 +48,7 @@ export const VestingCard: React.FC<VestingCardProps> = ({
     return () => clearInterval(interval);
   }, [flow]);
 
-  const withdrawable = Math.max(0, liveVested - flow.claimedAmount);
+  const withdrawable = calculateWithdrawable(liveVested, flow.claimedAmount);
   const isFullyVested = progress >= 100;
   const isCompleted = flow.claimedAmount >= flow.principal;
 
