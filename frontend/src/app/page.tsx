@@ -272,7 +272,7 @@ export default function Home() {
   }, [address, loadBlockchainData]);
 
   return (
-    <main className="min-h-screen bg-black/20 text-white pb-16">
+    <main className="min-h-screen text-indigo-950 pb-16">
       {/* Top Banner Wallet Panel */}
       <AccountConnector
         address={address}
@@ -290,21 +290,21 @@ export default function Home() {
         {/* User feedback / alerts panel */}
         {errorNotice && (
           <div 
-            className={`p-4 border font-mono text-xs rounded-lg flex items-center justify-between shadow-[0_0_15px_rgba(0,0,0,0.3)] transition-all ${
+            className={`p-4 font-mono text-xs rounded-2xl flex items-center justify-between glass-panel transition-all ${
               errorNotice.type === 'error'
-                ? 'bg-rose-50 border-rose-100 text-rose-800'
+                ? 'text-rose-700 border-rose-200/70'
                 : errorNotice.type === 'warning'
-                  ? 'bg-amber-900/30 border border-amber-500/30 border-amber-100 text-amber-800'
-                  : 'bg-cyan-900/30 border border-cyan-500/30 border-indigo-100 text-indigo-800'
+                  ? 'text-amber-700 border-amber-200/70'
+                  : 'text-indigo-800 border-white/40'
             }`}
           >
             <div className="flex items-center gap-2">
               <span className="font-bold">[{errorNotice.type.toUpperCase()}]</span>
               <span>{errorNotice.message}</span>
             </div>
-            <button 
-              onClick={() => setErrorNotice(null)} 
-              className="font-bold hover:underline font-mono text-[10px] uppercase ml-4 text-white/80 border border-white/10 px-2 py-0.5 glass-panel rounded transition-colors"
+            <button
+              onClick={() => setErrorNotice(null)}
+              className="font-bold font-mono text-[10px] uppercase ml-4 text-indigo-900/70 glass-button px-2 py-0.5 rounded-lg"
             >
               Dismiss
             </button>
@@ -326,13 +326,13 @@ export default function Home() {
 
             {/* Right panel: Active flows board */}
             <div className="lg:col-span-2 space-y-4">
-              <div className="flex items-center justify-between border-b border-white/10 pb-2 mb-4">
-                <h2 className="text-md font-bold uppercase tracking-tight text-zinc-950 flex items-center gap-2">
-                  <ShieldCheck size={18} className="text-white/80" />
+              <div className="flex items-center justify-between border-b border-white/40 pb-2 mb-4">
+                <h2 className="text-md font-bold uppercase tracking-tight text-indigo-950 flex items-center gap-2">
+                  <ShieldCheck size={18} className="text-violet-700" />
                   Active Vesting Flows
                 </h2>
                 {refreshing && (
-                  <span className="font-mono text-[9px] text-white/50 uppercase tracking-widest animate-pulse flex items-center gap-1.5">
+                  <span className="font-mono text-[9px] text-indigo-900/50 uppercase tracking-widest animate-pulse flex items-center gap-1.5">
                     <RefreshCw size={10} className="animate-spin" />
                     Syncing...
                   </span>
@@ -351,20 +351,20 @@ export default function Home() {
             </div>
           </div>
         ) : (
-          <div className="flex flex-col items-center justify-center py-20 border border-white/10 glass-panel rounded-xl shadow-[0_0_15px_rgba(0,0,0,0.3)] max-w-lg mx-auto text-center p-8 mt-12">
-            <div className="w-12 h-12 bg-white/10 text-white flex items-center justify-center rounded-lg mb-5 shadow-[0_0_15px_rgba(0,0,0,0.3)]">
+          <div className="flex flex-col items-center justify-center py-20 glass-panel rounded-3xl max-w-lg mx-auto text-center p-8 mt-12">
+            <div className="w-12 h-12 accent-button flex items-center justify-center rounded-2xl mb-5">
               <Layers size={24} className="stroke-[2]" />
             </div>
-            <h2 className="text-lg font-bold text-zinc-950 mb-2">
+            <h2 className="text-lg font-bold text-indigo-950 mb-2">
               Connect to Vesting Console
             </h2>
-            <p className="text-xs text-white/50 max-w-sm mb-6 leading-relaxed">
+            <p className="text-xs text-indigo-900/60 max-w-sm mb-6 leading-relaxed">
               Connect your Freighter or other Stellar wallet to initiate, monitor, and claim vesting payment flows in real time.
             </p>
             <button
               onClick={handleConnect}
               disabled={connecting}
-              className="flex items-center justify-center gap-2 px-6 py-2.5 bg-white/10 hover:bg-zinc-800 disabled:opacity-50 text-white font-semibold rounded-md text-sm transition-colors shadow-[0_0_15px_rgba(0,0,0,0.3)]"
+              className="flex items-center justify-center gap-2 px-6 py-2.5 accent-button disabled:opacity-50 font-semibold rounded-xl text-sm"
             >
               {connecting ? (
                 <>

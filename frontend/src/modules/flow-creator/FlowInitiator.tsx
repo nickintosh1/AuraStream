@@ -68,27 +68,27 @@ export const FlowInitiator: React.FC<FlowInitiatorProps> = ({
   };
 
   return (
-    <div className="border border-white/10 glass-panel p-6 rounded-lg shadow-[0_0_15px_rgba(0,0,0,0.3)]">
-      <div className="flex items-center gap-2 mb-6 pb-3 border-b border-white/5">
-        <Send size={18} className="text-white/80" />
-        <h2 className="text-md font-bold text-zinc-950 uppercase tracking-tight">
+    <div className="glass-panel p-6 rounded-3xl">
+      <div className="flex items-center gap-2 mb-6 pb-3 border-b border-white/40">
+        <Send size={18} className="text-violet-700" />
+        <h2 className="text-md font-bold text-indigo-950 uppercase tracking-tight">
           Create Vesting Flow
         </h2>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-4">
         {error && (
-          <div className="p-3 border border-red-200 bg-red-50 text-red-700 font-mono text-xs rounded-md">
+          <div className="p-3 glass-panel border-rose-200/70 text-rose-700 font-mono text-xs rounded-xl">
             ⚠️ {error}
           </div>
         )}
 
         <div>
-          <label className="block text-[10px] font-mono font-bold uppercase tracking-wider text-white/50 mb-1">
+          <label className="block text-[10px] font-mono font-bold uppercase tracking-wider text-indigo-900/50 mb-1">
             Beneficiary Address
           </label>
           <div className="relative">
-            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-white/50">
+            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-indigo-900/50">
               <User size={14} />
             </div>
             <input
@@ -97,18 +97,18 @@ export const FlowInitiator: React.FC<FlowInitiatorProps> = ({
               value={recipient}
               onChange={(e) => setRecipient(e.target.value)}
               disabled={loading}
-              className="block w-full pl-9 pr-3 py-2 border border-white/10 bg-black/20 rounded-md focus:glass-panel text-zinc-950 font-mono text-xs outline-none focus:border-zinc-500 focus:ring-0 transition-colors"
+              className="block w-full pl-9 pr-3 py-2 glass-input rounded-xl text-indigo-950 font-mono text-xs"
             />
           </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <label className="block text-[10px] font-mono font-bold uppercase tracking-wider text-white/50 mb-1">
+            <label className="block text-[10px] font-mono font-bold uppercase tracking-wider text-indigo-900/50 mb-1">
               Principal Amount (AURA)
             </label>
             <div className="relative">
-              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-white/50">
+              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-indigo-900/50">
                 <DollarSign size={14} />
               </div>
               <input
@@ -117,17 +117,17 @@ export const FlowInitiator: React.FC<FlowInitiatorProps> = ({
                 value={amount}
                 onChange={(e) => setAmount(e.target.value)}
                 disabled={loading}
-                className="block w-full pl-9 pr-3 py-2 border border-white/10 bg-black/20 rounded-md focus:glass-panel text-zinc-950 font-mono text-xs outline-none focus:border-zinc-500 focus:ring-0 transition-colors"
+                className="block w-full pl-9 pr-3 py-2 glass-input rounded-xl text-indigo-950 font-mono text-xs"
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-[10px] font-mono font-bold uppercase tracking-wider text-white/50 mb-1">
+            <label className="block text-[10px] font-mono font-bold uppercase tracking-wider text-indigo-900/50 mb-1">
               Vesting Period (Seconds)
             </label>
             <div className="relative">
-              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-white/50">
+              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-indigo-900/50">
                 <Clock size={14} />
               </div>
               <input
@@ -136,27 +136,27 @@ export const FlowInitiator: React.FC<FlowInitiatorProps> = ({
                 value={duration}
                 onChange={(e) => setDuration(e.target.value)}
                 disabled={loading}
-                className="block w-full pl-9 pr-3 py-2 border border-white/10 bg-black/20 rounded-md focus:glass-panel text-zinc-950 font-mono text-xs outline-none focus:border-zinc-500 focus:ring-0 transition-colors"
+                className="block w-full pl-9 pr-3 py-2 glass-input rounded-xl text-indigo-950 font-mono text-xs"
               />
             </div>
           </div>
         </div>
 
-        <div className="p-4 border border-white/5 bg-black/20 rounded-lg font-mono text-xs space-y-1.5 text-white/70">
+        <div className="p-4 glass-panel rounded-2xl font-mono text-xs space-y-1.5 text-indigo-900/70">
           <div className="flex justify-between">
-            <span className="text-white/50 uppercase font-semibold">Flow Rate:</span>
-            <span className="font-bold text-white">{ratePerSecond} AURA / sec</span>
+            <span className="text-indigo-900/50 uppercase font-semibold">Flow Rate:</span>
+            <span className="font-bold text-indigo-950">{ratePerSecond} AURA / sec</span>
           </div>
           <div className="flex justify-between">
-            <span className="text-white/50 uppercase font-semibold">Vesting Type:</span>
-            <span className="font-bold uppercase text-cyan-400">Continuous Linear</span>
+            <span className="text-indigo-900/50 uppercase font-semibold">Vesting Type:</span>
+            <span className="font-bold uppercase text-violet-700">Continuous Linear</span>
           </div>
         </div>
 
         <button
           type="submit"
           disabled={loading}
-          className="w-full flex items-center justify-center gap-2 py-2.5 bg-white/10 hover:bg-zinc-800 disabled:opacity-50 text-white font-semibold rounded-md text-sm transition-colors shadow-[0_0_15px_rgba(0,0,0,0.3)] disabled:cursor-not-allowed"
+          className="w-full flex items-center justify-center gap-2 py-2.5 accent-button disabled:opacity-50 font-semibold rounded-xl text-sm disabled:cursor-not-allowed"
         >
           {loading ? (
             <>

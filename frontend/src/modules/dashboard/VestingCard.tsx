@@ -53,22 +53,22 @@ export const VestingCard: React.FC<VestingCardProps> = ({
   const isCompleted = flow.claimedAmount >= flow.principal;
 
   return (
-    <div className="border border-white/10 glass-panel rounded-lg flex flex-col justify-between h-full shadow-[0_0_15px_rgba(0,0,0,0.3)] hover:shadow-md transition-shadow">
+    <div className="glass-panel rounded-3xl flex flex-col justify-between h-full transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(76,29,149,0.16)]">
       {/* Top Header */}
-      <div className="p-4 border-b border-white/5 bg-black/20 flex items-center justify-between rounded-t-lg">
+      <div className="p-4 border-b border-white/40 bg-white/20 flex items-center justify-between rounded-t-3xl">
         <div className="flex items-center gap-2">
-          <span className="px-2 py-0.5 bg-white/10 text-white font-mono text-[9px] font-bold rounded uppercase">
+          <span className="px-2 py-0.5 accent-button font-mono text-[9px] font-bold rounded-lg uppercase">
             ID: #{flow.id}
           </span>
-          <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-white/50">
+          <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-indigo-900/50">
             {isDepositor ? 'Depositor' : isBeneficiary ? 'Beneficiary' : 'Vesting'}
           </span>
         </div>
         <div>
           {isDepositor ? (
-            <ArrowUpRight size={14} className="text-white/50" />
+            <ArrowUpRight size={14} className="text-indigo-900/50" />
           ) : (
-            <ArrowDownLeft size={14} className="text-emerald-500" />
+            <ArrowDownLeft size={14} className="text-emerald-600" />
           )}
         </div>
       </div>
@@ -76,69 +76,69 @@ export const VestingCard: React.FC<VestingCardProps> = ({
       {/* Main Body */}
       <div className="p-5 space-y-4 flex-grow">
         {/* Addresses */}
-        <div className="space-y-1 bg-black/20 p-3 rounded-md font-mono text-[10px] text-white/60 border border-white/5">
+        <div className="space-y-1 glass-input p-3 rounded-xl font-mono text-[10px] text-indigo-900/60">
           <div className="flex justify-between">
             <span className="font-semibold uppercase">From:</span>
-            <span className="text-white">{flow.depositor.slice(0, 8)}...{flow.depositor.slice(-8)}</span>
+            <span className="text-indigo-950">{flow.depositor.slice(0, 8)}...{flow.depositor.slice(-8)}</span>
           </div>
           <div className="flex justify-between">
             <span className="font-semibold uppercase">To:</span>
-            <span className="text-white">{flow.beneficiary.slice(0, 8)}...{flow.beneficiary.slice(-8)}</span>
+            <span className="text-indigo-950">{flow.beneficiary.slice(0, 8)}...{flow.beneficiary.slice(-8)}</span>
           </div>
         </div>
 
         {/* Hero Vesting Ticker */}
         <div className="text-center py-2">
-          <p className="text-[10px] font-mono uppercase tracking-widest text-white/50 font-semibold mb-1">
+          <p className="text-[10px] font-mono uppercase tracking-widest text-indigo-900/50 font-semibold mb-1">
             Unlocked / Principal
           </p>
           <div className="flex items-baseline justify-center gap-1 font-mono">
-            <span className="text-2xl font-bold tabular-nums text-white tracking-tight">
+            <span className="text-2xl font-bold tabular-nums text-gradient tracking-tight">
               {liveVested.toFixed(4)}
             </span>
-            <span className="text-xs text-white/50">/ {flow.principal.toFixed(0)} AURA</span>
+            <span className="text-xs text-indigo-900/50">/ {flow.principal.toFixed(0)} AURA</span>
           </div>
         </div>
 
         {/* Progress bar */}
         <div className="space-y-1">
           <div className="flex justify-between font-mono text-[10px] font-semibold uppercase">
-            <span className="text-white/50">Progress</span>
-            <span className="text-white">{progress.toFixed(1)}%</span>
+            <span className="text-indigo-900/50">Progress</span>
+            <span className="text-indigo-950">{progress.toFixed(1)}%</span>
           </div>
-          <div className="w-full h-1.5 bg-white/5 rounded-full overflow-hidden">
-            <div 
-              className="h-full bg-cyan-500/20 text-cyan-400 border border-cyan-500/50 hover:bg-cyan-500/30 rounded-full transition-all duration-100 ease-out" 
+          <div className="w-full h-1.5 bg-white/40 rounded-full overflow-hidden">
+            <div
+              className="h-full bg-gradient-to-r from-violet-600 to-blue-600 rounded-full transition-all duration-100 ease-out"
               style={{ width: `${progress}%` }}
             ></div>
           </div>
         </div>
 
         {/* Claim State Info */}
-        <div className="p-3 bg-cyan-900/30 border border-cyan-500/30/50 rounded-lg border border-indigo-100/50 font-mono text-xs space-y-1 text-white/80">
+        <div className="p-3 glass-panel rounded-2xl font-mono text-xs space-y-1 text-indigo-900/80">
           <div className="flex justify-between">
-            <span className="text-white/50 uppercase font-medium">Claimed:</span>
-            <span className="font-semibold text-white">{flow.claimedAmount.toFixed(2)} AURA</span>
+            <span className="text-indigo-900/50 uppercase font-medium">Claimed:</span>
+            <span className="font-semibold text-indigo-950">{flow.claimedAmount.toFixed(2)} AURA</span>
           </div>
           <div className="flex justify-between">
-            <span className="text-white/50 uppercase font-medium">Withdrawable:</span>
-            <span className="font-bold text-cyan-400">{withdrawable.toFixed(4)} AURA</span>
+            <span className="text-indigo-900/50 uppercase font-medium">Withdrawable:</span>
+            <span className="font-bold text-violet-700">{withdrawable.toFixed(4)} AURA</span>
           </div>
         </div>
       </div>
 
       {/* Footer / Actions */}
-      <div className="p-4 border-t border-white/5 bg-black/20 flex gap-2.5 rounded-b-lg">
+      <div className="p-4 border-t border-white/40 bg-white/20 flex gap-2.5 rounded-b-3xl">
         {isBeneficiary ? (
           <button
             onClick={() => onClaim(flow.id)}
             disabled={loadingClaim || withdrawable <= 0 || isCompleted}
-            className="flex-grow py-2 bg-white/10 hover:bg-zinc-800 disabled:opacity-50 text-white font-semibold rounded-md text-xs transition-colors shadow-[0_0_15px_rgba(0,0,0,0.3)] disabled:cursor-not-allowed"
+            className="flex-grow py-2 accent-button disabled:opacity-50 font-semibold rounded-xl text-xs disabled:cursor-not-allowed"
           >
             {loadingClaim ? 'Claiming...' : isCompleted ? 'Completed' : `Claim ${withdrawable.toFixed(2)} AURA`}
           </button>
         ) : (
-          <div className="flex-grow flex items-center justify-center gap-1 py-2 border border-dashed border-white/10 bg-white/5/30 rounded-md font-mono text-[10px] text-white/50 font-semibold uppercase">
+          <div className="flex-grow flex items-center justify-center gap-1 py-2 border border-dashed border-white/50 bg-white/20 rounded-xl font-mono text-[10px] text-indigo-900/50 font-semibold uppercase">
             <ShieldAlert size={12} />
             Beneficiary Only
           </div>
@@ -149,7 +149,7 @@ export const VestingCard: React.FC<VestingCardProps> = ({
             onClick={() => onRevoke(flow.id)}
             disabled={loadingRevoke}
             title="Revoke Flow"
-            className="p-2 border border-red-200 bg-red-50 hover:bg-red-600 hover:text-white text-red-600 rounded-md transition-all disabled:opacity-50"
+            className="p-2 border border-rose-200/80 bg-rose-50/60 hover:bg-rose-600 hover:text-white text-rose-600 rounded-xl transition-all disabled:opacity-50"
           >
             <XCircle size={14} className="stroke-[2]" />
           </button>

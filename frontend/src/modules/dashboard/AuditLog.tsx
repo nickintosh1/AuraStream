@@ -18,16 +18,16 @@ interface AuditLogProps {
 
 export const AuditLog: React.FC<AuditLogProps> = ({ events }) => {
   return (
-    <div className="border border-white/10 glass-panel p-6 rounded-lg shadow-[0_0_15px_rgba(0,0,0,0.3)]">
-      <div className="flex items-center gap-2 mb-6 pb-3 border-b border-white/5">
-        <ListTodo size={18} className="text-white/80" />
-        <h2 className="text-md font-bold text-zinc-950 uppercase tracking-tight">
+    <div className="glass-panel p-6 rounded-3xl">
+      <div className="flex items-center gap-2 mb-6 pb-3 border-b border-white/40">
+        <ListTodo size={18} className="text-violet-700" />
+        <h2 className="text-md font-bold text-indigo-950 uppercase tracking-tight">
           Audit Log
         </h2>
       </div>
 
       {events.length === 0 ? (
-        <div className="py-8 text-center text-white/50 font-mono text-xs uppercase tracking-wider">
+        <div className="py-8 text-center text-indigo-900/50 font-mono text-xs uppercase tracking-wider">
           No recent events logged
         </div>
       ) : (
@@ -42,21 +42,21 @@ export const AuditLog: React.FC<AuditLogProps> = ({ events }) => {
             return (
               <div 
                 key={event.id} 
-                className="flex items-start gap-3 p-3 border border-white/5 bg-black/20 hover:glass-panel rounded-md transition-colors"
+                className="flex items-start gap-3 p-3 glass-input hover:bg-white/50 rounded-xl transition-colors"
               >
                 <div className="mt-0.5">
                   {event.type === 'initiated' && (
-                    <div className="p-1 bg-white/10 text-white rounded">
+                    <div className="p-1 bg-violet-100 text-violet-700 rounded-lg">
                       <Gift size={12} className="stroke-[2]" />
                     </div>
                   )}
                   {event.type === 'claimed' && (
-                    <div className="p-1 bg-emerald-100 text-emerald-400 rounded">
+                    <div className="p-1 bg-emerald-100 text-emerald-700 rounded-lg">
                       <CheckCircle size={12} className="stroke-[2]" />
                     </div>
                   )}
                   {event.type === 'revoked' && (
-                    <div className="p-1 bg-red-100 text-red-600 rounded">
+                    <div className="p-1 bg-rose-100 text-rose-600 rounded-lg">
                       <Flame size={12} className="stroke-[2]" />
                     </div>
                   )}
@@ -64,14 +64,14 @@ export const AuditLog: React.FC<AuditLogProps> = ({ events }) => {
 
                 <div className="flex-grow space-y-1">
                   <div className="flex justify-between items-baseline">
-                    <span className="font-mono text-[9px] font-bold text-white/50 uppercase">
+                    <span className="font-mono text-[9px] font-bold text-indigo-900/50 uppercase">
                       Flow #{event.flowId}
                     </span>
-                    <span className="font-mono text-[9px] text-white/50">
+                    <span className="font-mono text-[9px] text-indigo-900/50">
                       {dateStr}
                     </span>
                   </div>
-                  <p className="text-xs text-white font-semibold font-mono">
+                  <p className="text-xs text-indigo-950 font-semibold font-mono">
                     {event.type === 'initiated' && `Vesting flow created with ${event.amount} AURA`}
                     {event.type === 'claimed' && `Claimed ${event.amount.toFixed(2)} AURA`}
                     {event.type === 'revoked' && `Flow revoked (${event.amount.toFixed(2)} AURA returned)`}
@@ -80,7 +80,7 @@ export const AuditLog: React.FC<AuditLogProps> = ({ events }) => {
                     href={`https://stellar.expert/explorer/testnet/tx/${event.txHash}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-block font-mono text-[9px] text-cyan-400 hover:underline font-bold"
+                    className="inline-block font-mono text-[9px] text-blue-700 hover:underline font-bold"
                   >
                     View on Stellar Expert ({event.txHash.slice(0, 8)}...)
                   </a>

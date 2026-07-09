@@ -39,11 +39,11 @@ export const FlowConsole: React.FC<FlowConsoleProps> = ({
   return (
     <div className="space-y-6">
       {/* Tabs / Filtering */}
-      <div className="flex border border-white/10 glass-panel p-1 rounded-lg max-w-sm shadow-[0_0_15px_rgba(0,0,0,0.3)]">
+      <div className="flex glass-panel p-1 rounded-2xl max-w-sm">
         <button
           onClick={() => setActiveTab('all')}
-          className={`flex-grow flex items-center justify-center gap-1.5 py-1.5 px-3 rounded-md font-mono text-xs font-bold uppercase tracking-wider transition-all ${
-            activeTab === 'all' ? 'bg-white/10 text-white shadow-[0_0_15px_rgba(0,0,0,0.3)]' : 'hover:bg-black/20 text-white/60 hover:text-white'
+          className={`flex-grow flex items-center justify-center gap-1.5 py-1.5 px-3 rounded-xl font-mono text-xs font-bold uppercase tracking-wider transition-all ${
+            activeTab === 'all' ? 'bg-white/60 text-violet-800 shadow-sm' : 'hover:bg-white/30 text-indigo-900/60 hover:text-indigo-950'
           }`}
         >
           <Columns size={12} />
@@ -51,8 +51,8 @@ export const FlowConsole: React.FC<FlowConsoleProps> = ({
         </button>
         <button
           onClick={() => setActiveTab('sent')}
-          className={`flex-grow flex items-center justify-center gap-1.5 py-1.5 px-3 rounded-md font-mono text-xs font-bold uppercase tracking-wider transition-all ${
-            activeTab === 'sent' ? 'bg-white/10 text-white shadow-[0_0_15px_rgba(0,0,0,0.3)]' : 'hover:bg-black/20 text-white/60 hover:text-white'
+          className={`flex-grow flex items-center justify-center gap-1.5 py-1.5 px-3 rounded-xl font-mono text-xs font-bold uppercase tracking-wider transition-all ${
+            activeTab === 'sent' ? 'bg-white/60 text-violet-800 shadow-sm' : 'hover:bg-white/30 text-indigo-900/60 hover:text-indigo-950'
           }`}
         >
           <ArrowUpRight size={12} />
@@ -60,8 +60,8 @@ export const FlowConsole: React.FC<FlowConsoleProps> = ({
         </button>
         <button
           onClick={() => setActiveTab('received')}
-          className={`flex-grow flex items-center justify-center gap-1.5 py-1.5 px-3 rounded-md font-mono text-xs font-bold uppercase tracking-wider transition-all ${
-            activeTab === 'received' ? 'bg-white/10 text-white shadow-[0_0_15px_rgba(0,0,0,0.3)]' : 'hover:bg-black/20 text-white/60 hover:text-white'
+          className={`flex-grow flex items-center justify-center gap-1.5 py-1.5 px-3 rounded-xl font-mono text-xs font-bold uppercase tracking-wider transition-all ${
+            activeTab === 'received' ? 'bg-white/60 text-violet-800 shadow-sm' : 'hover:bg-white/30 text-indigo-900/60 hover:text-indigo-950'
           }`}
         >
           <ArrowDownLeft size={12} />
@@ -71,17 +71,17 @@ export const FlowConsole: React.FC<FlowConsoleProps> = ({
 
       {/* Grid of Flows */}
       {refreshing && flows.length === 0 ? (
-        <div className="flex items-center justify-center py-12 border border-dashed border-white/10 glass-panel rounded-lg">
-          <p className="font-mono text-xs uppercase tracking-widest text-white/50 animate-pulse">
+        <div className="flex items-center justify-center py-12 border border-dashed border-white/50 glass-panel rounded-2xl">
+          <p className="font-mono text-xs uppercase tracking-widest text-indigo-900/50 animate-pulse">
             Syncing ledger state...
           </p>
         </div>
       ) : filteredFlows.length === 0 ? (
-        <div className="flex flex-col items-center justify-center py-16 border border-dashed border-white/10 glass-panel rounded-lg shadow-[0_0_15px_rgba(0,0,0,0.3)]">
-          <p className="font-mono text-sm uppercase tracking-wider text-white font-bold mb-2">
+        <div className="flex flex-col items-center justify-center py-16 border border-dashed border-white/50 glass-panel rounded-2xl">
+          <p className="font-mono text-sm uppercase tracking-wider text-indigo-950 font-bold mb-2">
             No flows found
           </p>
-          <p className="font-mono text-xs text-white/50 max-w-xs text-center">
+          <p className="font-mono text-xs text-indigo-900/60 max-w-xs text-center">
             {activeTab === 'all' 
               ? "You don't have any active vesting flows. Create one to begin vesting tokens."
               : activeTab === 'sent'
