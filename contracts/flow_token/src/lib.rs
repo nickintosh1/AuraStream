@@ -87,6 +87,23 @@ impl FlowTokenContract {
         env.events()
             .publish((Symbol::new(&env, "mint"), to), amount);
     }
+
+    // --- Standard Soroban Token Interface missing methods ---
+    pub fn allowance(_env: Env, _from: Address, _spender: Address) -> i128 {
+        0
+    }
+
+    pub fn approve(_env: Env, _from: Address, _spender: Address, _amount: i128, _expiration_ledger: u32) {
+        panic!("approve not implemented");
+    }
+
+    pub fn transfer_from(_env: Env, _spender: Address, _from: Address, _to: Address, _amount: i128) {
+        panic!("transfer_from not implemented");
+    }
+
+    pub fn burn(_env: Env, _from: Address, _amount: i128) {
+        panic!("burn not implemented");
+    }
 }
 
 mod test;

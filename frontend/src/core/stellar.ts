@@ -336,10 +336,14 @@ export async function addTokenToWallet(): Promise<void> {
     throw new Error('Freighter network is not set to TESTNET. Please set your Freighter wallet network to Testnet first.');
   }
 
-  await addToken({
+  const res = await addToken({
     contractId: auraContractAddress,
     networkPassphrase: networkPassphrase,
   });
+
+  if (res.error) {
+    throw new Error(res.error);
+  }
 }
 
 export async function mintTokens(recipient: string, amount: number): Promise<string> {
