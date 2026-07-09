@@ -11,7 +11,7 @@
 
 **Continuous linear token vesting and asset streaming on Stellar Testnet — built using Soroban smart contracts with verifiable on-chain inter-contract calls.**
 
-🌐 **Live Demo:** PENDING — not yet deployed to a public URL. `wrangler.toml` is configured for Cloudflare Workers static hosting; deploying requires a Cloudflare account login, which an agent cannot perform on the maintainer's behalf.
+🌐 **[Live Demo →](https://aurastream.parcel-crib-pectin.workers.dev/)**
 
 🎬 **Demo Video (1–2 min):** PENDING — must be recorded and hosted by a human; cannot be produced by an automated agent.
 
