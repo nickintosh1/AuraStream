@@ -4,7 +4,6 @@
 # Rust / Cargo
 target/
 **/*.rs.bk
-Cargo.lock
 
 # Node / Next.js
 node_modules/
