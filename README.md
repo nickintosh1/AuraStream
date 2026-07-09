@@ -13,7 +13,8 @@
 
 🌐 **[Live Demo →](https://aurastream.parcel-crib-pectin.workers.dev/)**
 
-🎬 **Demo Video (1–2 min):** PENDING — must be recorded and hosted by a human; cannot be produced by an automated agent.
+🎬 **Demo Video:**  
+![AuraStream Demo](screenshots/Snapzy_Recording_2026-07-09_23-14-01.gif)
 
 </div>
 
@@ -235,9 +236,12 @@ AuraStream implements rigorous exception handling covering three mandatory fallb
 
 ## 📸 Screenshots
 
-**PENDING** — no screenshot images exist in this repo yet. Required and not yet captured: wallet-connected state, core vesting flow, success state, mobile UI (375px/768px), and a green CI run. These need to be captured manually against a running instance (ideally with a real Freighter wallet connected) and committed under a `screenshots/` folder, then linked here.
+Here are some previews of the AuraStream interface in action:
 
-A code-level review of `frontend/src` confirms the responsive layout uses adaptive Tailwind patterns (`grid-cols-1 md:grid-cols-2 lg:grid-cols-3`, `flex-col md:flex-row`, `w-full md:w-auto`) rather than fixed pixel widths, and no `overflow-x` hacks — but this has not been confirmed with an actual mobile-width screenshot.
+![Dashboard](screenshots/Snapzy_2026-07-09_23-06-06_910.png)
+![Vesting Details](screenshots/Snapzy_2026-07-09_23-08-39_723.png)
+![Wallet interaction](screenshots/Snapzy_2026-07-09_23-24-55_458.png)
+![UI interactions](screenshots/Snapzy_2026-07-09_23-25-06_064.png)
 
 ### Cargo Test Output (15 passing tests, contracts)
 
