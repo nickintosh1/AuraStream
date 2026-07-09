@@ -2,7 +2,7 @@
 
 <div align="center">
 
-<!-- [![CI](https://github.com/[YOUR_USERNAME]/[YOUR_REPO]/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/[YOUR_USERNAME]/[YOUR_REPO]/actions/workflows/ci.yml) -->
+[![CI](https://github.com/nickintosh1/AuraStream/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/nickintosh1/AuraStream/actions/workflows/ci.yml)
 [![Stellar Testnet](https://img.shields.io/badge/Stellar-Testnet-7B61FF?logo=stellar&logoColor=white)](https://stellar.org)
 [![Soroban](https://img.shields.io/badge/Soroban-SDK%20v25-zinc?logo=rust&logoColor=white)](https://soroban.stellar.org)
 [![Next.js](https://img.shields.io/badge/Next.js-14-black?logo=next.js)](https://nextjs.org)
@@ -11,7 +11,9 @@
 
 **Continuous linear token vesting and asset streaming on Stellar Testnet — built using Soroban smart contracts with verifiable on-chain inter-contract calls.**
 
-🌐 **[Live Demo →](#)** <!-- Add Live Demo Link Here -->
+🌐 **Live Demo:** PENDING — not yet deployed to a public URL. `wrangler.toml` is configured for Cloudflare Workers static hosting; deploying requires a Cloudflare account login, which an agent cannot perform on the maintainer's behalf.
+
+🎬 **Demo Video (1–2 min):** PENDING — must be recorded and hosted by a human; cannot be produced by an automated agent.
 
 </div>
 
@@ -233,12 +235,13 @@ AuraStream implements rigorous exception handling covering three mandatory fallb
 
 ## 📸 Screenshots
 
-<!-- Add your screenshots and demo video here. For example: -->
-<!-- ![Desktop home page](screenshots/desktop_home.png) -->
-<!-- ![Mobile Layout View](screenshots/mobile_view.png) -->
-<!-- ![Demo video](screenshots/demo_video.gif) -->
+**PENDING** — no screenshot images exist in this repo yet. Required and not yet captured: wallet-connected state, core vesting flow, success state, mobile UI (375px/768px), and a green CI run. These need to be captured manually against a running instance (ideally with a real Freighter wallet connected) and committed under a `screenshots/` folder, then linked here.
 
-### Cargo Test Output (15 passing tests)
+A code-level review of `frontend/src` confirms the responsive layout uses adaptive Tailwind patterns (`grid-cols-1 md:grid-cols-2 lg:grid-cols-3`, `flex-col md:flex-row`, `w-full md:w-auto`) rather than fixed pixel widths, and no `overflow-x` hacks — but this has not been confirmed with an actual mobile-width screenshot.
+
+### Cargo Test Output (15 passing tests, contracts)
+
+Reproduced locally by this audit — output is real and unedited:
 
 ```
 running 4 tests
@@ -265,6 +268,13 @@ test test::test_fetch_user_flows_depositor_and_beneficiary ... ok
 test result: ok. 11 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.11s
 ```
 
+### Vitest Output (7 passing tests, frontend vesting math)
+
+```
+ Test Files  1 passed (1)
+      Tests  7 passed (7)
+```
+
 ---
 
 ## 🚀 Setup Instructions
@@ -277,7 +287,7 @@ test result: ok. 11 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; fin
 
 ### 1. Clone & Install
 ```bash
-git clone https://github.com/[YOUR_USERNAME]/AuraStream.git
+git clone https://github.com/nickintosh1/AuraStream.git
 cd AuraStream
 
 # Install dependencies
@@ -304,11 +314,17 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ## 🧪 Testing
 
-Both contracts are verified locally via workspace cargo runs.
+Contracts are verified locally via workspace cargo runs; the vesting-accrual math on the frontend is covered by Vitest unit tests.
 
-### Run tests
+### Run contract tests
 ```bash
-cargo test
+cargo test --workspace
+```
+
+### Run frontend tests
+```bash
+cd frontend
+npm run test
 ```
 
 ---
